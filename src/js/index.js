@@ -7,7 +7,7 @@ const profileResults = document.querySelector(".profile-results");
 
 const BASE_URL = "https://api.github.com";
 
-btnSearch.addEventListener("click", async () => {
+async function getUserProfile(){
     const userName = inputSearch.value;
 
     if (!userName) {
@@ -28,4 +28,12 @@ btnSearch.addEventListener("click", async () => {
             alert("Ocorreu um erro ao buscar o perfil do usuário. Por favor, tente novamente mais tarde.")
             profileResults.innerHTML = ""
         }
+};
+
+btnSearch.addEventListener("click", getUserProfile);
+
+inputSearch.addEventListener("keyup", (event) => {
+    if(event.key === 'Enter'){
+        getUserProfile();
+    }
 });
